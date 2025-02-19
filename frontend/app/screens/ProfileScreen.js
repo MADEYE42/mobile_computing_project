@@ -9,8 +9,11 @@ import {
   SafeAreaView
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import { useRouter } from 'expo-router';
 
-export default function ProfileScreen({ navigation }) {
+export default function ProfileScreen() {
+  const router = useRouter();
+
   const menuItems = [
     { icon: 'person-outline', title: 'Edit Profile', screen: 'EditProfile' },
     { icon: 'location-outline', title: 'Shipping Address', screen: 'Address' },
@@ -21,7 +24,7 @@ export default function ProfileScreen({ navigation }) {
   ];
 
   const handleLogout = () => {
-    navigation.replace('Login');
+    router.replace('/login');
   };
 
   return (
@@ -45,7 +48,7 @@ export default function ProfileScreen({ navigation }) {
             <TouchableOpacity
               key={index}
               style={styles.menuItem}
-              onPress={() => navigation.navigate(item.screen)}
+              onPress={() => router.push(`/${item.screen}`)}
             >
               <View style={styles.menuItemContent}>
                 <Ionicons name={item.icon} size={24} color="#6200ee" />

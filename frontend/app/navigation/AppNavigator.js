@@ -29,7 +29,7 @@ function TabNavigator() {
           let iconName;
 
           switch (route.name) {
-            case 'HomeTab':
+            case 'Home':
               iconName = focused ? 'home' : 'home-outline';
               break;
             case 'Search':
@@ -59,7 +59,7 @@ function TabNavigator() {
       })}
     >
       <Tab.Screen 
-        name="HomeTab" 
+        name="Home" 
         component={HomeScreen} 
         options={{ title: 'Home' }}
       />

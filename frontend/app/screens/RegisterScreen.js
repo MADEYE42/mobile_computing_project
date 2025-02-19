@@ -19,8 +19,10 @@ import axios from 'axios';
 import { Ionicons } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Toast } from '../../components/Toast';
+import { useRouter } from 'expo-router';
 
-export default function RegisterScreen({ navigation }) {
+export default function RegisterScreen() {
+  const router = useRouter();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -43,8 +45,8 @@ export default function RegisterScreen({ navigation }) {
       alert('Passwords do not match');
       return;
     }
-    // Directly navigate to Home
-    navigation.replace('Home');
+    // Use router instead of navigation
+    router.replace('/(tabs)');
   };
 
   return (
@@ -61,7 +63,7 @@ export default function RegisterScreen({ navigation }) {
           <ScrollView showsVerticalScrollIndicator={false}>
             <View style={styles.headerContainer}>
               <TouchableOpacity 
-                onPress={() => navigation.goBack()}
+                onPress={() => router.back()}
                 style={styles.backButton}
               >
                 <Ionicons name="arrow-back" size={24} color="#fff" />
@@ -147,7 +149,7 @@ export default function RegisterScreen({ navigation }) {
               </TouchableOpacity>
 
               <TouchableOpacity 
-                onPress={() => navigation.navigate('Login')}
+                onPress={() => router.push('/login')}
                 style={styles.loginContainer}
               >
                 <Text style={styles.loginText}>

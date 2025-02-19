@@ -1,7 +1,6 @@
 // frontend/app/index.tsx
 import React from "react";
-import AppNavigator from "../navigation/AppNavigator";
+import HomeScreen from '../screens/HomeScreen';
 
-export default function App() {
-  return <AppNavigator />;
-}
+// Just export HomeScreen directly
+export default HomeScreen;

@@ -18,8 +18,10 @@ import { Ionicons } from '@expo/vector-icons';
 import { Toast } from '../../components/Toast';
 import { apiClient } from '../../config/api';
 import { LinearGradient } from 'expo-linear-gradient';
+import { useRouter } from 'expo-router';
 
-export default function LoginScreen({ navigation }) {
+export default function LoginScreen() {
+  const router = useRouter();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
@@ -30,13 +32,11 @@ export default function LoginScreen({ navigation }) {
   };
 
   const handleLogin = async () => {
-    // Simple validation
     if (!email || !password) {
       alert('Please fill in all fields');
       return;
     }
-    // Directly navigate to Home
-    navigation.replace('Home');
+    router.replace('/(tabs)');
   };
 
   return (
@@ -121,7 +121,7 @@ export default function LoginScreen({ navigation }) {
             </TouchableOpacity>
 
             <TouchableOpacity 
-              onPress={() => navigation.navigate('Register')}
+              onPress={() => router.push('Register')}
               style={styles.registerContainer}
             >
               <Text style={styles.registerText}>
